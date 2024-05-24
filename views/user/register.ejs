@@ -1,0 +1,20 @@
+<%- include('../layout') %>
+<h1>Register User</h1>
+<form action="/user/register" method="POST">
+  <label for="user_id">User ID:</label>
+  <input type="text" id="user_id" name="user_id" required />
+  <label for="reg_no">Reg_no:</label>
+  <input type="text" id="reg_no" name="reg_no" required />
+
+  <label for="name">name:</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required />
+
+
+  <label for="contact_no">Contact_no:</label>
+  <input type="text" id="contact_no" name="contact_no" required />
+
+  <button type="submit">Register</button>
+</form>

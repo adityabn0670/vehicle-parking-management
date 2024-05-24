@@ -1,0 +1,20 @@
+<%- include('../layout') %>
+<h1>Add Vehicle</h1>
+<form action="/vehicle/add" method="POST">
+
+  <input type="hidden" name="user_id" value="<%= user_id %>">
+
+  <label for="reg_no">Registration Number:</label>
+  <input type="text" id="reg_no" name="reg_no" required />
+
+  <label for="model">Vehicle Model:</label>
+  <input type="text" id="model" name="model" required />
+
+  <label for="color">Color:</label>
+  <input type="text" id="color" name="color" required />
+
+  <label for="category">Category:</label>
+  <input type="text" id="category" name="category" required />
+
+  <button type="submit">Add Vehicle</button>
+</form>
