@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const db = require('../utils/db');
 
-// Route to allocate a parking slot and render the display page
+router.get('/add', (req, res) => {
+    // Render a page for adding a new vehicle
+    res.render('parking/display', { user_id: req.query.user_id});
+ });
+
 router.post('/add', (req, res) => {
     const query = `SELECT SlotNo FROM ParkingSlot WHERE Availability = 'Yes' LIMIT 1`;
 

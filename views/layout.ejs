@@ -1,11 +1,128 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Vehicle Parking Management</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
-  <body>
+<head>
+  <title>Vehicle Parking Management</title>
+  <link rel="stylesheet" href="/public/css/styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+     
+      /* background-image: url('https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/PDaTSuJ/videoblocks-plexus-abstract-network-business-technology-science-background-loop_bj-cr7db7_thumbnail-1080_01.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: cover; */
+      background-color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fbf5f5;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #f3efef;
+      text-align: center;
+    }
+
+    .strength-indicator {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 0.8em;
+      margin-left: 10px;
+    }
+
+    .weak {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .medium {
+      background-color: #ffa500;
+      color: white;
+    }
+
+    .strong {
+      background-color: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
     <%- body %>
-    <script src="/js/script.js"></script>
-  </body>
+  </main>
+  <script src="/public/js/script.js"></script>
+</body>
 </html>

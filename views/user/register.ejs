@@ -1,20 +1,246 @@
 <%- include('../layout') %>
-<h1>Register User</h1>
-<form action="/user/register" method="POST">
-  <label for="user_id">User ID:</label>
-  <input type="text" id="user_id" name="user_id" required />
-  <label for="reg_no">Reg_no:</label>
-  <input type="text" id="reg_no" name="reg_no" required />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - SmartPark</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            color: #212121;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-  <label for="name">name:</label>
-  <input type="text" id="name" name="name" required />
+        header {
+            background-color: #ffffff;
+            color: #212121;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required />
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: black;
+        }
 
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+        }
 
-  <label for="contact_no">Contact_no:</label>
-  <input type="text" id="contact_no" name="contact_no" required />
+        nav ul li {
+            display: inline;
+        }
 
-  <button type="submit">Register</button>
-</form>
+        nav ul li a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #3367d6;
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: #757575;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        footer p {
+            color: #212121;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 100px auto;
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #212121;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #212121;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            background-color: #4285f4;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #3367d6;
+        }
+
+        .login-container .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .login-container .links a {
+            color: #4285f4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .login-container .links a:hover {
+            color: #3367d6;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+            }
+
+            .login-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>SmartPark</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/admin/login">Parking Manager Login</a></li>
+                <li><a href="/user/register">User Registration</a></li>
+                <li><a href="/user/login">User Login</a></li>
+                <li><a href="/parking/view">View Parking Slots</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="login-container">
+        <h1>Register User</h1>
+        <form action="/user/register" method="POST" onsubmit="return validateForm()">
+          <label for="user_id">User ID:</label>
+          <input type="text" id="user_id" name="user_id" required />
+          <span id="userIdError" style="color: red;"></span> <!-- Display error message here -->
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <span id="nameError" style="color: red;"></span> <!-- Display error message here -->
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <span id="passwordError" style="color: red;"></span> <!-- Display error message here -->
+          <label for="contact_no">Contact No:</label>
+          <input type="text" id="contact_no" name="contact_no" required />
+          <span id="contactNoError" style="color: red;"></span> <!-- Display error message here -->
+          <button type="submit">Register</button>
+      </form>
+        <div class="links">
+            <a href="/user/login">User Login</a>
+            <a href="/admin/login">Admin Login</a>
+            <a href="/">Back</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>SmartPark © All Rights Reserved 2024</p>
+    </footer>
+    <script>
+      function validateForm() {
+          var userId = document.getElementById('user_id').value.trim();
+          var name = document.getElementById('name').value.trim();
+          var password = document.getElementById('password').value;
+          var contactNo = document.getElementById('contact_no').value.trim();
+          var userIdError = document.getElementById('userIdError');
+          var nameError = document.getElementById('nameError');
+          var passwordError = document.getElementById('passwordError');
+          var contactNoError = document.getElementById('contactNoError');
+          var valid = true;
+
+          // Validate User ID (should be a number)
+          if (!(/^\d+$/.test(userId))) {
+              userIdError.textContent = 'User ID must be a number.';
+              valid = false;
+          } else {
+              userIdError.textContent = ''; // Clear error message
+          }
+
+          // Validate Name (should contain only alphabets)
+          if (!(/^[A-Za-z]+$/.test(name))) {
+              nameError.textContent = 'Name must contain only alphabets.';
+              valid = false;
+          } else {
+              nameError.textContent = ''; // Clear error message
+          }
+
+          // Validate Password (should be unique - basic check)
+          // This should ideally be checked on the server side for uniqueness
+          // but here we'll just check length for demonstration
+          if (password.length < 8) {
+              passwordError.textContent = 'Password must be at least 8 characters long.';
+              valid = false;
+          } else {
+              passwordError.textContent = ''; // Clear error message
+          }
+
+          // Validate Contact No (should be a 10-digit number)
+          if (!(/^\d{10}$/.test(contactNo))) {
+              contactNoError.textContent = 'Contact No must be a 10-digit number.';
+              valid = false;
+          } else {
+              contactNoError.textContent = ''; // Clear error message
+          }
+
+          return valid;
+      }
+  </script>
+</body>
+</html>

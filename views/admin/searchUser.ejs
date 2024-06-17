@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SmartPark</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: beige;
+            text-align: center;
+        }
+
+        form, #userDetails {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #212121;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3367d6;
+        }
+
+        #userDetails h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        #userDetails p {
+            margin-bottom: 10px;
+            color: #212121;
+        }
+
+        #userDetails p:last-child {
+            margin-bottom: 0;
+        }
+
+        .not-found {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 5px;
+            background-color: #4285f4;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #3367d6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search User</h1>
+    <form action="/admin/search-user" method="POST">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="userDetails">
+        <% if (userData) { %>
+            <h3>User Details</h3>
+            <p><strong>Name:</strong> <%= userData.name %></p>
+            <p><strong>Contact No:</strong> <%= userData.contact_no %></p>
+            <p><strong>Vehicle Details:</strong></p>
+            <p><strong>Reg No:</strong> <%= userData.reg_no %></p>
+            <p><strong>Model:</strong> <%= userData.model %></p>
+            <p><strong>Color:</strong> <%= userData.color %></p>
+            <p><strong>Category:</strong> <%= userData.category %></p>
+            <p><strong>In Time:</strong> <%= userData.intime %></p>
+            <p><strong>Parking Slot:</strong> <%= userData.SlotNo %></p>
+        <% } else { %>
+            <p class="not-found">User not found</p>
+        <% } %>
+    </div>
+    <a href="/admin/dashboard">Go Back</a>
+</body>
+</html>

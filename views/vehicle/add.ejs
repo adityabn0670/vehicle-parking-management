@@ -1,20 +1,238 @@
-<%- include('../layout') %>
-<h1>Add Vehicle</h1>
-<form action="/vehicle/add" method="POST">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle - SmartPark</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            color: #212121;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-  <input type="hidden" name="user_id" value="<%= user_id %>">
+        header {
+            background-color: #ffffff;
+            color: #212121;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  <label for="reg_no">Registration Number:</label>
-  <input type="text" id="reg_no" name="reg_no" required />
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
 
-  <label for="model">Vehicle Model:</label>
-  <input type="text" id="model" name="model" required />
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+        }
 
-  <label for="color">Color:</label>
-  <input type="text" id="color" name="color" required />
+        nav ul li {
+            display: inline;
+        }
 
-  <label for="category">Category:</label>
-  <input type="text" id="category" name="category" required />
+        nav ul li a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
-  <button type="submit">Add Vehicle</button>
-</form>
+        nav ul li a:hover {
+            background-color: #3367d6;
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: #757575;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        footer p {
+            color: #212121;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 100px auto;
+           
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            color: #212121;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #212121;
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .container button {
+            background-color: #4285f4;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .container button:hover {
+            background-color: #3367d6;
+        }
+
+        .container .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .container .links a {
+            color: #4285f4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .container .links a:hover {
+            color: #3367d6;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>SmartPark</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/admin/login">Parking Manager Login</a></li>
+                <li><a href="/user/register">User Registration</a></li>
+                <li><a href="/user/login">User Login</a></li>
+                <li><a href="/parking/view">View Parking Slots</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+      <h1>Add Vehicle</h1>
+      <form action="/vehicle/add" method="POST" onsubmit="return validateForm()">
+        <input type="hidden" name="user_id" value="<%= user_id %>">
+
+        <label for="reg_no">Registration Number:</label>
+        <input type="text" id="reg_no" name="reg_no" required />
+        <span id="regNoError" style="color: red;"></span> <!-- Display error message here -->
+
+        <label for="model">Vehicle Model:</label>
+        <input type="text" id="model" name="model" required />
+        <span id="modelError" style="color: red;"></span> <!-- Display error message here -->
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required />
+
+        <label for="category">Category (2 or 4 wheeler):</label>
+        <input type="text" id="category" name="category" required />
+        <span id="categoryError" style="color: red;"></span> <!-- Display error message here -->
+
+        <button type="submit">Add Vehicle</button>
+    </form>
+      <div class="links">
+          <a href="/user/login">User Login</a>
+          <a href="/admin/login">Parking Manager Login</a>
+          <a href="/">Back to Home</a>
+      </div>
+  </div>
+
+  <footer>
+      <p>SmartPark &copy; All Rights Reserved 2024</p>
+  </footer>
+  <script>
+    function validateForm() {
+        var regNo = document.getElementById('reg_no').value.trim();
+        var model = document.getElementById('model').value.trim();
+        var color = document.getElementById('color').value.trim();
+        var category = document.getElementById('category').value.trim();
+        var regNoError = document.getElementById('regNoError');
+        var modelError = document.getElementById('modelError');
+        var categoryError = document.getElementById('categoryError');
+        var valid = true;
+
+        // Validate Registration Number
+        if (!(/^[A-Za-z]{2}\d{2}[A-Za-z0-9]{6}$/.test(regNo))) {
+            regNoError.textContent = 'Invalid registration number format.';
+            valid = false;
+        } else {
+            regNoError.textContent = ''; // Clear error message
+        }
+
+        // Validate Vehicle Model (only alphabets)
+        if (!(/^[A-Za-z]+$/.test(model))) {
+            modelError.textContent = 'Model should contain only alphabets.';
+            valid = false;
+        } else {
+            modelError.textContent = ''; // Clear error message
+        }
+
+        // Validate Category (either 2 or 4 digits)
+        if (!(/^\d{2}(\d{2})?$/.test(category))) {
+            categoryError.textContent = 'Category should be either 2 or 4 digits.';
+            valid = false;
+        } else {
+            categoryError.textContent = ''; // Clear error message
+        }
+
+        return valid;
+    }
+</script>
+</body>
+</html>

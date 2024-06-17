@@ -72,8 +72,16 @@ function calculatePasswordStrength(password) {
 }
 
 function displayPasswordStrength(strength, input) {
-  const strengthIndicator = document.createElement('div');
-  strengthIndicator.classList.add('strength-indicator');
+  let strengthIndicator = input.nextElementSibling;
+  
+  if (!strengthIndicator || !strengthIndicator.classList.contains('strength-indicator')) {
+    strengthIndicator = document.createElement('div');
+    strengthIndicator.classList.add('strength-indicator');
+    input.parentNode.appendChild(strengthIndicator);
+  }
+
+  strengthIndicator.textContent = '';
+  strengthIndicator.className = 'strength-indicator'; // Reset classes
 
   switch (strength) {
     case 0:
@@ -94,10 +102,4 @@ function displayPasswordStrength(strength, input) {
     default:
       break;
   }
-
-  const parent = input.parentNode;
-  if (parent.querySelector('.strength-indicator')) {
-    parent.querySelector('.strength-indicator').remove();
-  }
-  parent.appendChild(strengthIndicator);
 }

@@ -1,9 +1,209 @@
-<%- include('layout') %>
-<h1>Welcome to Vehicle Parking Management</h1>
-<a href="/admin/register">Register Admin</a>
-<a href="/admin/login">Admin Login</a>
-<a href="/user/register">Register User</a>
-<a href="/user/login">User Login</a>
-<a href="/vehicle/add">Add Vehicle</a>
-<a href="/parking/add">Add Parking Slot</a>
-<a href="/transaction/add">Add Transaction</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartPark</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            color: #212121;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: #212121;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            background-color: #4285f4;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #3367d6;
+        }
+
+        main {
+            padding: 0;
+            text-align: center;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1604063155785-ee4488b8ad15?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            height: calc(90vh - 70px);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #4285f4;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3367d6;
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: #757575;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            color: #212121;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .button {
+                width: 80%;
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .button {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>SmartPark</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/admin/login">Parking Manager Login</a></li>
+                <li><a href="/user/register">User Registration</a></li>
+                <li><a href="/user/login">User Login</a></li>
+                <li><a href="/parking/view">View Parking Slots</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Welcome to SmartPark</h1>
+                <p>Effortlessly manage your parking spaces with our smart solutions.</p>
+                <div class="hero-buttons">
+                    <a href="/admin/login" class="button">Parking Manager Login</a>
+                    <a href="/user/register" class="button">User Registration</a>
+                    <a href="/user/login" class="button">User Login</a>
+                    <a href="/parking/view" class="button">View Parking Slots</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>SmartPark © All Rights Reserved 2024</p>
+    </footer>
+</body>
+</html>

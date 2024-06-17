@@ -1,8 +1,60 @@
-<%- include('../layout') %>
-<h1>User Login</h1>
-<form action="/save-outtime/exit" method="post">
-    <!-- Your form fields and submit button -->
-    <input type="hidden" name="user_id" value="<%= user_id %>">
-    <button type="submit">Exit</button>
-  
-</form>
+<!-- <%- include('../layout') %> -->
+
+<div class="container">
+    <h1 style="color: white;">Click on exit button for transaction details</h1>
+    <form action="/save-outtime/exit" method="post">
+        <input type="hidden" name="user_id" value="<%= user_id %>">
+        <button type="submit" class="exit-button">Exit</button>
+    </form>
+</div>
+
+<style>
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 600px;
+        background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    .exit-button {
+        background-color: #4285f4;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+    }
+
+    .exit-button:hover {
+        background-color: #3367d6;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+    }
+</style>

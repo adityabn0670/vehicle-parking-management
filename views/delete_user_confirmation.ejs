@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slot Allotted - SmartPark</title>
+    <title>Delete User Confirmation</title>
     <style>
         body {
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
             color: white;
             display: flex;
@@ -18,46 +18,51 @@
         }
 
         .container {
-            background-color: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+            background: #fff;
             padding: 40px;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
             text-align: center;
         }
 
         h1 {
             margin-bottom: 20px;
-            font-size: 2rem;
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
         }
 
         p {
+            font-size: 16px;
+            color: #555;
             margin-bottom: 20px;
-            font-size: 1.2em; /* Larger font for better readability */
+            font-weight: bold;
         }
 
-        button {
-            background-color: #4285f4;
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 5px;
+            background-color: #4285f4; /* Blue button background */
             color: white;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
+            text-decoration: none;
+            font-size: 16px;
             transition: background-color 0.3s;
+            margin-top: 20px;
         }
 
-        button:hover {
-            background-color: #3367d6;
+        a:hover {
+            background-color: #3367d6; /* Darker blue on hover */
         }
-
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Slot Allotted Successfully</h1>
-        <p>Slot Number: <%= slotNo %></p>
-        <form action="/" method="get">
-            <button type="submit">Logout</button>
-        </form>
+        <h1>User Deleted Successfully</h1>
+        <p>The user has been deleted and the slot has been updated.</p>
+        <a href="/admin/dashboard">Go Back</a>
     </div>
 </body>
 </html>

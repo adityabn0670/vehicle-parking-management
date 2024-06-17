@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Existing Vehicle</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #212121;
+        }
+        label {
+            display: block;
+            margin: 15px 0;
+            font-size: 1.2rem;
+            color: #212121;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #4285f4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color:  #3367d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Existing Vehicle</h1>
+        <form action="/vehicle/add-existing" method="post">
+            <input type="hidden" name="user_id" value="<%= user_id %>">
+            <label>Registration Number: <%= reg_no %></label>
+            <input type="hidden" name="reg_no" value="<%= reg_no %>">
+            <button type="submit">Add Vehicle</button>
+        </form>
+    </div>
+</body>
+</html>
