@@ -41,7 +41,9 @@ app.use('/delete_user', deleteUserRoutes);
 app.use('/admin',userSearchRoutes);
 app.use('/vehicle-transaction', vehicleTransactionRoute);
 
-
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/admin/contact.html'));
+});
 app.get('/', (req, res) => {
   res.render('index', { body: '' }); // Pass an empty string for the body initially
 });

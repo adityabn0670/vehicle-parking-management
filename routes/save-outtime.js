@@ -27,9 +27,9 @@ router.post('/exit', (req, res) => {
       const trans_id = uuidv4().slice(0, 10);
       const reg_no = intimeResult[0].reg_no;
 
-      // Insert into trans_details table
-      const insertQuery = 'INSERT INTO trans_details (trans_id, amount, reg_no, user_id, intime, outtime) VALUES (?, ?, ?, ?, ?, ?)';
-      db.query(insertQuery, [trans_id, amount, reg_no, user_id, intimeResult[0].intime, outtime], (insertErr, insertResult) => {
+      // Insert into trans_details table, including intime1
+      const insertQuery = 'INSERT INTO trans_details (trans_id, amount, reg_no, user_id, intime, outtime, intime1) VALUES (?, ?, ?, ?, ?, ?, ?)';
+      db.query(insertQuery, [trans_id, amount, reg_no, user_id, intimeResult[0].intime, outtime, intimeResult[0].intime], (insertErr, insertResult) => {
         if (insertErr) {
           console.error('Error inserting transaction details:', insertErr);
           return res.status(500).send('Error inserting transaction details.');

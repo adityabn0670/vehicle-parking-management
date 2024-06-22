@@ -9,7 +9,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            background: url('https://images.unsplash.com/photo-1604063155785-ee4488b8ad15?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
             color: #212121;
             display: flex;
             flex-direction: column;
@@ -79,7 +79,6 @@
             max-width: 400px;
             width: 100%;
             margin: 100px auto;
-           
         }
 
         .container h1 {
@@ -104,6 +103,18 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+        }
+
+        .container select {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            appearance: none; /* Remove default arrow */
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI2Ij48cGF0aCBkPSJNNSA2bC01LTUgMS4zLTExLjdsMS4zLjIuNy43LTEuNyAyLjkgMi42IDIuNCAyLjYtMi40IDEuNy0yLjkuNy0uNy0uMiAxLjMtMTEuN0w1IDB6Ii8+PC9zdmc+') no-repeat right 10px center;
+            background-color: white;
         }
 
         .container button {
@@ -181,7 +192,11 @@
         <input type="text" id="color" name="color" required />
 
         <label for="category">Category (2 or 4 wheeler):</label>
-        <input type="text" id="category" name="category" required />
+        <select id="category" name="category" required>
+            <option value="">Select Category</option>
+            <option value="2">2-wheeler</option>
+            <option value="4">4-wheeler</option>
+        </select>
         <span id="categoryError" style="color: red;"></span> <!-- Display error message here -->
 
         <button type="submit">Add Vehicle</button>
@@ -223,9 +238,9 @@
             modelError.textContent = ''; // Clear error message
         }
 
-        // Validate Category (either 2 or 4 digits)
-        if (!(/^\d{2}(\d{2})?$/.test(category))) {
-            categoryError.textContent = 'Category should be either 2 or 4 digits.';
+        // Validate Category (either "2" or "4")
+        if (!(category === "2" || category === "4")) {
+            categoryError.textContent = 'Category should be either 2 or 4.';
             valid = false;
         } else {
             categoryError.textContent = ''; // Clear error message

@@ -9,12 +9,13 @@ router.get('/', (req, res) => {
     veh_details.model,
     veh_details.color,
     veh_details.category,
-    veh_details.intime AS veh_intime,
+    -- veh_details.intime AS veh_intime,
     veh_details.user_id,
     user.name AS user_name,
     trans_details.trans_id,
     trans_details.amount,
     trans_details.outtime,
+    trans_details.intime1,
     ps.SlotNo
 FROM 
     veh_details
