@@ -1,60 +1,70 @@
-<!-- <%- include('../layout') %> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit - SmartPark</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1604063155785-ee4488b8ad15?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
 
-<div class="container">
-    <h1 style="color: white;">Click on exit button for transaction details</h1>
-    <form action="/save-outtime/exit" method="post">
-        <input type="hidden" name="user_id" value="<%= user_id %>">
-        <button type="submit" class="exit-button">Exit</button>
-    </form>
-</div>
+        .container {
+            width: 80%;
+            max-width: 500px;
+            background: rgba(0, 0, 0, 0.75); /* Semi-transparent dark background */
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
 
-<style>
-    body {
-        font-family: 'Roboto', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        color: white;
-    }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #ffffff;
+        }
 
-    .container {
-        width: 80%;
-        max-width: 600px;
-        background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-        padding: 30px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .exit-button {
+            background-color: #4285f4;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-    h1 {
-        margin-bottom: 20px;
-        font-size: 1.5rem;
-    }
+        .exit-button:hover {
+            background-color: #3367d6;
+            transform: scale(1.05);
+        }
 
-    .exit-button {
-        background-color: #4285f4;
-        color: white;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: background-color 0.3s ease;
-    }
-
-    .exit-button:hover {
-        background-color: #3367d6;
-    }
-
-    form {
-        display: flex;
-        justify-content: center;
-    }
-</style>
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Click on the exit button for transaction details</h1>
+        <form action="/save-outtime/exit" method="post">
+            <input type="hidden" name="user_id" value="<%= user_id %>">
+            <button type="submit" class="exit-button">Exit</button>
+        </form>
+    </div>
+</body>
+</html>
